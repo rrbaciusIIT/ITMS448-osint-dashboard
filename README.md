@@ -6,11 +6,11 @@ This is a final project for ITMS448 at IIT: An OSINT dashboard for gathering int
 
 Install Python 3.
 
-`pip install pipenv`
+`pip install pipenv` installs a Python environment manager.
 
-`pipenv install`
+`pipenv install` installs dependencies specified in `/Pipfile`.
 
-`pipenv shell`
+`pipenv shell` opens a shell with all your Python deps installed.
 
 ## Running
 
