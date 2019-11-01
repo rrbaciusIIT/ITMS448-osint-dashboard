@@ -4,8 +4,8 @@ from scrapy import Selector
 from pprint import pprint
 
 
-class A4chanSpider(scrapy.Spider):
-    name = '4chan'
+class AArchivedMoeSpider(scrapy.Spider):
+    name = 'archived.moe'
     allowed_domains = ['archived.moe']
     start_urls = ['https://archived.moe/pol/']
 
@@ -17,8 +17,11 @@ class A4chanSpider(scrapy.Spider):
         for item in response.css(self.POST_CONTROLS_SELECTOR):
             item: Selector
 
-            print("Here's the whole thing:")
-            pprint(item.get())
+            # print("Here's the whole thing:")
+            # pprint(item.get())
+
+            print("rexp for thread URLs:")
+            pprint(item.re(r'href=".+?/thread/\d+?/"'))
 
             # post_url = item.re('').get()
             #

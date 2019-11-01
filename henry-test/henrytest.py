@@ -12,7 +12,7 @@ API_ENDPOINT = 'http://archive.4plebs.org/_/api/chan/index/?board=adv&page=1'
 # https://www.digitalocean.com/community/tutorials/how-to-crawl-a-web-page-with-scrapy-and-python-3
 #
 #
-# Run `scrapy runspider testScrapyProject/spiders/a4chan.py` for scraping cool stuff :3
+# Run `scrapy runspider testScrapyProject/spiders/aarchivedmoe.py` for scraping cool stuff :3
 #
 
 print("Wow!")
