@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from typing import List
+
 import scrapy
 from scrapy import Selector
 from pprint import pprint
@@ -20,8 +22,10 @@ class AArchivedMoeSpider(scrapy.Spider):
             # print("Here's the whole thing:")
             # pprint(item.get())
 
-            print("rexp for thread URLs:")
-            pprint(item.re(r'href=".+?/thread/\d+?/"'))
+            post_matches: List[str] = item.re(r'href=".+?/thread/\d+?/"')
+
+            if len(post_matches) is not 0:
+                pprint(post_matches)
 
             # post_url = item.re('').get()
             #
