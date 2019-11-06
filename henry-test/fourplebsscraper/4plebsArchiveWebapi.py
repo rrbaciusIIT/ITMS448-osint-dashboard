@@ -22,6 +22,12 @@ TOTALLY_LEGIT_HEADERS = {
 }
 
 
+def should_flag_content(content: str) -> bool:
+    """Should this content be flagged?"""
+    # TODO This is naive
+    return 'fuck' in content
+
+
 def gen_index_api_url(board: str, page: int) -> str:
     """Given a board and page number, return a URL for the web API that will retrieve that index page's posts."""
     return f"http://archive.4plebs.org/_/api/chan/index/?board={board}&page={page}"
@@ -59,7 +65,6 @@ def httpGET_json(url: str) -> dict:
     data = (response.json())
 
     return data
-
 
 
 if __name__ == '__main__':
