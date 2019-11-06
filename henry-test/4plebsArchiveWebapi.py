@@ -8,8 +8,22 @@ import requests_cache
 # Cache for rapid querying that lasts 60 seconds.
 requests_cache.install_cache('4plebs_cache', backend='sqlite', expire_after=60)
 
+
+def gen_index_url(board: str, page: int) -> str:
+    return f"http://archive.4plebs.org/_/api/chan/index/?board={board}&page={page}"
+
+
+def gen_post_url(board: str, postid: int) -> str:
+    return f"http://archive.4plebs.org/_/api/chan/post/?board={board}&num={postid}"
+
+
+def gen_thread_url(board: str, threadid: int) -> str:
+    return f"http://archive.4plebs.org/_/api/chan/thread/?board={board}&num={threadid}"
+
+
 # from https://archive.4plebs.org/_/articles/faq/
-POL_PAGE_1_URL = 'http://archive.4plebs.org/_/api/chan/index/?board=pol&page=1'
+POL_PAGE_1_URL = gen_index_url('pol', 1)
+
 TOTALLY_LEGIT_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) '
                   'Chrome/50.0.2661.102 Safari/537.36'
@@ -34,4 +48,10 @@ def testCacheWorks():
         print(requests.get('http://httpbin.org/delay/5'))
 
 
-pprint(httpGET_json(POL_PAGE_1_URL))
+if __name__ == '__main__':
+    result = httpGET_json(POL_PAGE_1_URL)
+
+    postids = result.keys()
+
+    pprint(result)
+    pprint(postids)
