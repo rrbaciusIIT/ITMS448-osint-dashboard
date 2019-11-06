@@ -1,8 +1,11 @@
+import os
+import sys
 import threading
 import unittest
 
 import requests
 
+import cache
 from cache import install_4plebs_cache
 import signal
 
@@ -36,6 +39,10 @@ def testCacheWorks():
 
 
 class SimpleTestCase(unittest.TestCase):
+
+    def tearDown(self) -> None:
+        os.remove(cache.get_cache_filename())
+
     def testCache(self):
         try:
 
